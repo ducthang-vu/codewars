@@ -1,0 +1,18 @@
+With iteration and no math.log:
+
+def bouncingBall(h, bounce, window):
+    if h > 0 and 0 < bounce < 1 and window < h:
+        passing = 1
+        while h * bounce > window:
+            passing += 2
+            h *= bounce
+        return passing
+    else:
+        return -1
+
+
+
+stringa lettere separate
+singola lettera
+creo nuova lettera
+ributto nella stringa

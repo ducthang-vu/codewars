@@ -1,0 +1,55 @@
+# More difficult in case the problem does not specify wich string have to be rearrange with the other (see notes):
+
+VERSION WITH TESTING INSIDE
+
+    def scramble(s1, s2):
+    l1 = list(s1)  # every character as a list item
+    l2 = list(s2)
+    print(l1)
+    print(l2)
+    failures = 0
+    contatore = 0
+    while len(l1) - 1 >= failures and l2:
+        print('')
+        print(contatore)
+        z = l1.pop(failures)
+        try:
+            l2.pop(l2.index(z))
+            contatore += 1
+            print(l1)
+            print(l2)
+        except ValueError:
+            contatore += 1
+            l1.insert(0, z)
+            print(z)
+            if len(s1) <= len(s2):
+                print('ve')
+                return False
+            else:
+                failures += 1
+                print('failure')
+                continue
+    return False if l2 else True
+
+
+VERSIONE CLEAN:
+
+    def scramble(s1, s2):
+    l1 = list(s1)  # every character as a list item
+    l2 = list(s2)
+    failures = 0
+    contatore = 0
+    while len(l1) - 1 >= failures and l2:
+        z = l1.pop(failures)
+        try:
+            l2.pop(l2.index(z))
+            contatore += 1
+        except ValueError:
+            contatore += 1
+            l1.insert(0, z)
+            if len(s1) <= len(s2):
+                return False
+            else:
+                failures += 1
+                continue
+    return False if l2 else True

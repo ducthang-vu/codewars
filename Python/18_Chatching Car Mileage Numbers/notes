@@ -1,0 +1,7 @@
+new_array = [10 if int(n) == 0 else int(n) for n in list(str(number))]
+    for key, value in enumerate(new_array[1:], start=1):
+        if value == new_array[key - 1] + 1:
+            continue
+        else:
+            return False
+    return True

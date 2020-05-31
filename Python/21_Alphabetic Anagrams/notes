@@ -1,0 +1,128 @@
+# workds without repetitions
+
+def listPosition(word, a=0):
+    """Return the anagram list position of the word"""
+    array = []
+    for key, letter in enumerate(word[a:-1]):
+        print(word[a:])
+        print(f'permutation of {word[a:]} are {permutations(word[a:])}')
+        print(f'lenght of {word[a:]} is {len(set(word[a:]))}')
+        print(f'the letter {letter} is in position: {sorted(set(word[a:])).index(letter)}')
+        var = sorted(set(word[a:])).index(letter) * permutations(word[a:]) / len(set(word[a:]))
+        if var != 0:
+            array.append(var)
+        else:
+            print(array)
+            a += 1
+            print(a)
+            print('\tfine iterazione\n')
+            continue
+        print(array)
+        a += 1
+        print(a)
+        print('\tfine iterazione\n')
+    return sum(array) + 1
+
+
+#LONG VERSION:
+from math import factorial
+
+
+def permutations(word, denominator=1):
+    """Given a string, gives number of permutations"""
+    for item in [factorial(list(word).count(letter)) for letter in set(list(word))]:
+        denominator *= item
+    return int(factorial(len(word)) / denominator)
+
+
+def listPosition(word):
+    array_prime = []
+    for key, letter in enumerate(word[:-1]):
+        print(f'\t\t\t--{key} ITERATION STARTED --\n')
+        working_word = list(word[key:])  #list of all letters sorted
+        set_letters = sorted(set(working_word))
+        column = set_letters.index(letter)
+        array_sec = []
+        print(f'working word is: {working_word}')
+        print(f'set letteres is: {set_letters}')
+        print(f'column is: {column}')
+        for time in range(column):
+            print(f'\ttime is: {time}')
+            sec_word = working_word[:]
+            sec_word.remove(set_letters[time])
+            print(f'\tsec_word is: {sec_word}')
+            print(f'\tpermutation are: {permutations(sec_word)}')
+            array_sec.append(permutations(sec_word))
+        total_sec = sum(array_sec)
+        array_prime.append(total_sec)
+        print(f'\ttotal sec is: {total_sec}')
+        print(array_prime)
+        print('\t\t\t--ITERATION ENDED --\n')
+    print('\t\t\t---END---')
+    return sum(array_prime) + 1
+
+
+#V2
+
+def listPosition(word):
+    array_prime = []
+    for key, letter in enumerate(word[:-1]):
+        working_word = list(word[key:])
+        set_letters = sorted(set(working_word))
+        column = set_letters.index(letter)
+        array_sec = []
+        for time in range(column):
+            sec_word = working_word[:]
+            sec_word.remove(set_letters[time])
+            array_sec.append(permutations(sec_word))
+        array_prime.append(sum(array_sec))
+    return sum(array_prime) + 1
+
+
+
+def listPosition(word):
+    array = []
+    for key, letter in enumerate(word[:-1]):
+        working_word = list(word[key:])
+        set_letters = sorted(set(working_word))
+        column = set_letters.index(letter)
+        for time in range(column):
+            sec_word = working_word[:]
+            sec_word.remove(set_letters[time])
+            array.append(permutations(sec_word))
+    return sum(array) + 1
+
+
+def listPosition(word):
+    array = []
+    for key, letter in enumerate(word[:-1]):
+        for time in range(sorted(set(list(word[key:]))).index(letter)):
+            sec_word = list(word[key:])[:]
+            sec_word.remove(sorted(set(list(word[key:])))[time])
+            array.append(permutations(sec_word))
+    return sum(array) + 1
+
+
+#DOES NOT WORK
+def listPosition(word):
+    l_word = list(word)
+    letters = sorted(word)
+    array = []
+    while l_word:
+        print(f'--NEW CICLE WITH--: {l_word}')
+        for key, letter in enumerate(letters):
+            print(f'\t\tsecondary cicle: {key} and {letter}')
+            print(f'\t\t{l_word[0]}')
+            if letter != l_word[0]:
+                new_letters = letters[:key] + letters [key+1:]
+                print(f'\t\tSecondary array is:')
+                print(new_letters)
+                print(f'\t\tpermutation with it are: {permutations(new_letters)}')
+                array.append(permutations(new_letters))
+                print(array)
+            else:
+                print('\t\t--BREAK--\n\n')
+                letters.pop(key)
+                l_word.pop(0)
+                break
+    return sum(array) + 1

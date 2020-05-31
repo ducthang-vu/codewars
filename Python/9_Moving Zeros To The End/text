@@ -1,0 +1,4 @@
+def move_zeros(array):
+    new_array = [item for item in array if not (type(item) != bool and item == 0)]
+    new_array += (0 for i in range(len(array) - len(new_array)))
+    return new_array

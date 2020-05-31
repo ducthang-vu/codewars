@@ -1,0 +1,23 @@
+def reversing_dictionary(dictionary):
+    for key, value in dictionary.items():
+        new_dictionary[value] = key
+    print(new dictionary)
+
+
+def decode(code):
+    # Decodes only string with one letter written in Morse
+    return MORSE_CODE[code.strip()]
+
+
+def decodeMorse(morse_code):
+    # Accept dots, dashes and spaces, return human-readable message
+    words = morse_code.strip().split('  ')
+    sentence = []
+    for word in words:
+        chars = word.split()
+        new_word = []
+        for char in chars:
+            new_char = MORSE_CODE[char]
+            new_word.append(new_char)
+        sentence.append(''.join(new_word))
+    return ' '.join(sentence)
