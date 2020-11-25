@@ -22,14 +22,11 @@ The trick of the memoized version is that we will keep a cache data structure (m
 Refactor the function into a recursive Fibonacci function that using a memoized data structure avoids the deficiencies of tree recursion Can you make it so the memoization cache is private to this function?
 */
 
-
-const fibonacci = function(n) {
+const fibonacci = (() =>  {
     const results = [0, 1]
-    const getResult = () => {
-        while (!results[n]) {
-            results.push(results[results.length - 1] + results[results.length - 2])
-        }
+    return n => {
+        if (results[n]) return results[n]
+        while (isNaN(results[n])) results.push(results[results.length - 1] + results[results.length - 2])
         return results[n]
     }
-    return 
-} 
+})()
