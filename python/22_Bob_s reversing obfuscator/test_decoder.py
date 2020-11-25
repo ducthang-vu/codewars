@@ -1,5 +1,5 @@
 import unittest
-from decoder import decoder
+from .decoder import decoder
 
 
 class SequenceTest(unittest.TestCase):
@@ -19,11 +19,9 @@ class SequenceTest(unittest.TestCase):
         self.assertEqual(decoder("Proinq.tile sitrobol rotittrop ,non muspi siu dnefiele ,sutcel neipas ", 'q'),
                          "Proin sapien lectus, eleifend uis ipsum non, porttitor lobortis elit.")
 
-
     def test_string4(self):
         self.assertEqual(decoder("q.qSusqsitanenev cen lsin sillom subinif ecsuF .itnetop essidnep", 'q'),
                          "Suspendisse potenti. Fusce finibus mollis nisl nec venenatis.")
-
 
     def test_string5(self):
         self.assertEqual(decoder("Dq.silucaiqonec mollq odommoc qis ipsum qlsin lev", 'q'),

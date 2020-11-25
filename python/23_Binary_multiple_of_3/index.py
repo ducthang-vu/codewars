@@ -1,3 +1,7 @@
+# Binary multiple of 3
+#
+# https://www.codewars.com/kata/54de279df565808f8b00126a/train/python
+#
 # In this kata, your task is to create a regular expression capable of evaluating binary strings (strings with only 1s
 # and 0s) and determining whether the given string represents a number divisible by 3.
 #
@@ -27,4 +31,8 @@
 import re
 
 
-PATTERN = re.compile(r'(1(01*0)*1|0)*')
+PATTERN = re.compile(r'0*(0|(1(01*0)*10*)+)$')
+
+
+# SOLUTION
+# PATTERN = re.compile(r'0*(0|(1(01*0)*10*)+)$')

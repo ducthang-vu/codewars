@@ -23,8 +23,13 @@ Refactor the function into a recursive Fibonacci function that using a memoized 
 */
 
 
-var fibonacci = function(n) {
-    if(n==0 || n == 1)
-        return n;
-    return fibonacci(n-1) + fibonacci(n-2);
-}
+const fibonacci = function(n) {
+    const results = [0, 1]
+    const getResult = () => {
+        while (!results[n]) {
+            results.push(results[results.length - 1] + results[results.length - 2])
+        }
+        return results[n]
+    }
+    return 
+} 
