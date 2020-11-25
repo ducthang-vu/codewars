@@ -1,6 +1,7 @@
 api_key.txt
-python/.idea
 php/script.py
 php/template_folder
-idea/
+**/.idea/
+**/.vscode/
+**/__pycache__
 
