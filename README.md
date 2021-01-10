@@ -1,1 +1,1 @@
-Katas from https://www.codewars.com/ in Python, JavaScript, PHP and SQL.
+Katas from https://www.codewars.com/ in Python, JavaScript, PHP, SQL, Shell, Haskell.

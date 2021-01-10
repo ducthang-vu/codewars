@@ -28,7 +28,7 @@ import re
 
 
 def cleaning(text):
-    return re.findall("[\s]?([']?[a-z]+'?[a-z']*)[\s,:]?", text.lower())
+    return re.findall(r"[\s]?([']?[a-z]+'?[a-z']*)[\s,:]?", text.lower())
 
 
 def top_3_words(text):
