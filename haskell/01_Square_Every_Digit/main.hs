@@ -15,12 +15,27 @@ module SquareDigit where
 import Data.Char ( digitToInt )
 import Data.List ( intercalate )
 
-fun :: Int -> [Int]
-fun = map digitToInt . show . abs
+split :: Int -> [Int]
+split = map digitToInt . show . abs
 
-inter :: [Int] -> [String]
-inter n = [show (x ^ 2) | x <- n]
+square :: [Int] -> [String]
+square n = [show (x ^ 2) | x <- n]
+
+squareDigitAbs :: Int -> Int
+squareDigitAbs = read . intercalate "" . square . split 
 
 squareDigit :: Int -> Int
-squareDigit = read . intercalate "" . inter . fun 
+squareDigit a = if a >= 0 then squareDigitAbs a else (-squareDigitAbs a)
 
+
+{- Solution:
+
+module SquareDigit where
+import Data.Char
+
+squareDigit :: Int -> Int
+squareDigit n
+  | n < 0 = negate (squareDigit (negate n))
+  | otherwise = read (show n >>= (show . (^2) . digitToInt))
+
+-}

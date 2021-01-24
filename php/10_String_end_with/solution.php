@@ -13,5 +13,5 @@ solution('abc', 'd') // returns false
 
 
 function solution($str, $ending) {
-    return boolval(preg_match(sprintf('/%s$/', preg_quote($ending)), $str));
+    return boolval(preg_match(sprintf('/%s$/', preg_quote($ending)), addslashes($str)));
 }
